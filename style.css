@@ -13,38 +13,214 @@
 
 /* 🌴 Tropical */
 body.theme-tropical {
-    --bg: #E0FBFC;
-    --primary: #0081A7;
-    --secondary: #2A9D8F;
-    --accent: #FF7B54;
+    --bg: #E6FFFB;
+    --primary: #00A8E8;
+    --secondary: #00B894;
+    --accent: #FF5E78;
+    --highlight: #FFD166;
     --text: #023047;
 }
 
 /* 🏔 Mountain */
 body.theme-mountain {
-    --bg: #F1FAEE;
-    --primary: #2D6A4F;
-    --secondary: #74C69D;
-    --accent: #7F5539;
+    --bg: #EAF4F4;
+    --primary: #1B4332;
+    --secondary: #4F772D;
+    --accent: #6F4E37;
+    --highlight: #DDA15E;
     --text: #081C15;
 }
 
 /* 🌆 City */
 body.theme-city {
-    --bg: #F5F5F5;
-    --primary: #1D3557;
-    --secondary: #457B9D;
+    --bg: #0F172A;
+    --primary: #3A86FF;
+    --secondary: #8338EC;
     --accent: #FF006E;
-    --text: #212529;
+    --highlight: #00F5D4;
+    --text: #E5E7EB;
 }
 
 /* 🏝 Beach Sunset */
 body.theme-beach-sunset {
-    --bg: #FAEDCD;
-    --primary: #F77F00;
-    --secondary: #FCBF49;
+    --bg: #FFF1E6;
+    --primary: #FF7A18;
+    --secondary: #FF4D6D;
     --accent: #0077B6;
+    --highlight: #FFC300;
     --text: #3A2E2A;
+}
+
+/* City dark mode fixes */
+body.theme-city header {
+    background: #1e293b;
+    color: #E5E7EB;
+}
+
+body.theme-city .logo {
+    color: #00F5D4;
+}
+
+body.theme-city .user-profile {
+    background: rgba(255, 255, 255, 0.08);
+    color: #E5E7EB;
+}
+
+/* ─── Detail view: use theme variables instead of extracted palette ─── */
+/* Default theme */
+.full-page-view {
+    background-color: var(--bg);
+}
+
+.full-page-view .detail-page-header {
+    background: rgba(47, 93, 80, 0.08);
+    border-bottom: 1px solid rgba(47, 93, 80, 0.12);
+    color: var(--text);
+}
+
+/* 🌴 Tropical */
+body.theme-tropical .full-page-view {
+    background-color: #E6FFFB;
+}
+
+body.theme-tropical .full-page-view .detail-page-header {
+    background: linear-gradient(90deg, rgba(0, 168, 232, 0.15) 0%, rgba(0, 184, 148, 0.12) 100%);
+    border-bottom: 1px solid rgba(0, 168, 232, 0.25);
+    color: #023047;
+}
+
+body.theme-tropical .full-page-view .back-btn,
+body.theme-tropical .full-page-view .secondary-btn {
+    color: #023047;
+    border-color: rgba(0, 168, 232, 0.3);
+}
+
+body.theme-tropical .full-page-view .secondary-btn {
+    background: rgba(0, 168, 232, 0.12);
+}
+
+body.theme-tropical .full-page-view .add-media-label {
+    background: #FF5E78;
+    box-shadow: 0 4px 14px rgba(255, 94, 120, 0.4);
+}
+
+body.theme-tropical .theme-toggle-btn {
+    background: #FF5E78;
+    box-shadow: 0 8px 20px rgba(255, 94, 120, 0.45);
+}
+
+body.theme-tropical .full-page-view .detail-memory-text {
+    color: #023047;
+}
+
+/* 🏔 Mountain */
+body.theme-mountain .full-page-view {
+    background-color: #EAF4F4;
+}
+
+body.theme-mountain .full-page-view .detail-page-header {
+    background: linear-gradient(90deg, rgba(27, 67, 50, 0.12) 0%, rgba(79, 119, 45, 0.1) 100%);
+    border-bottom: 1px solid rgba(27, 67, 50, 0.2);
+    color: #081C15;
+}
+
+body.theme-mountain .full-page-view .back-btn,
+body.theme-mountain .full-page-view .secondary-btn {
+    color: #081C15;
+    border-color: rgba(27, 67, 50, 0.3);
+}
+
+body.theme-mountain .full-page-view .secondary-btn {
+    background: rgba(27, 67, 50, 0.08);
+}
+
+body.theme-mountain .full-page-view .add-media-label {
+    background: #6F4E37;
+    box-shadow: 0 4px 14px rgba(111, 78, 55, 0.4);
+}
+
+body.theme-mountain .theme-toggle-btn {
+    background: #6F4E37;
+    box-shadow: 0 8px 20px rgba(111, 78, 55, 0.45);
+}
+
+body.theme-mountain .full-page-view .detail-memory-text {
+    color: #081C15;
+}
+
+/* 🌆 City – dark background, LIGHT text throughout */
+body.theme-city .full-page-view {
+    background-color: #0F172A;
+}
+
+body.theme-city .full-page-view .detail-page-header {
+    background: #1e293b;
+    border-bottom: 1px solid rgba(0, 245, 212, 0.18);
+    color: #E5E7EB;
+}
+
+body.theme-city .full-page-view .back-btn,
+body.theme-city .full-page-view .secondary-btn {
+    color: #E5E7EB;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.theme-city .full-page-view .secondary-btn {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+body.theme-city .full-page-view .add-media-label {
+    background: #FF006E;
+    box-shadow: 0 4px 18px rgba(255, 0, 110, 0.5);
+}
+
+body.theme-city .theme-toggle-btn {
+    background: #FF006E;
+    box-shadow: 0 8px 24px rgba(255, 0, 110, 0.55);
+}
+
+body.theme-city .full-page-view .detail-memory-text {
+    color: #E5E7EB;
+}
+
+body.theme-city .full-page-view .modal-content {
+    /* recorded-on date etc */
+    color: #E5E7EB;
+}
+
+/* 🏝 Beach Sunset */
+body.theme-beach-sunset .full-page-view {
+    background-color: #FFF1E6;
+}
+
+body.theme-beach-sunset .full-page-view .detail-page-header {
+    background: linear-gradient(90deg, rgba(255, 122, 24, 0.15) 0%, rgba(255, 77, 109, 0.12) 100%);
+    border-bottom: 1px solid rgba(255, 122, 24, 0.25);
+    color: #3A2E2A;
+}
+
+body.theme-beach-sunset .full-page-view .back-btn,
+body.theme-beach-sunset .full-page-view .secondary-btn {
+    color: #3A2E2A;
+    border-color: rgba(255, 122, 24, 0.3);
+}
+
+body.theme-beach-sunset .full-page-view .secondary-btn {
+    background: rgba(255, 122, 24, 0.1);
+}
+
+body.theme-beach-sunset .full-page-view .add-media-label {
+    background: #0077B6;
+    box-shadow: 0 4px 14px rgba(0, 119, 182, 0.4);
+}
+
+body.theme-beach-sunset .theme-toggle-btn {
+    background: #FF7A18;
+    box-shadow: 0 8px 20px rgba(255, 122, 24, 0.45);
+}
+
+body.theme-beach-sunset .full-page-view .detail-memory-text {
+    color: #3A2E2A;
 }
 
 * {
@@ -396,7 +572,7 @@ header {
 
 /* Full Page View */
 .modal.full-page-view {
-    background-color: white;
+    background-color: var(--bg);
     backdrop-filter: none;
 }
 
@@ -406,8 +582,8 @@ header {
     max-width: 100%;
     height: 100vh;
     border-radius: 0;
-    background: var(--card-bg, white);
-    color: var(--card-text, var(--text));
+    background: var(--bg);
+    color: var(--text);
     box-shadow: none;
     display: flex;
     flex-direction: column;
@@ -634,26 +810,25 @@ header {
     border-radius: 50%;
 }
 
-/* Theme dot colors */
+/* Theme dot swatches */
+.theme-option[data-theme="default"] span {
+    background: #2F5D50;
+}
+
 .theme-tropical-opt span {
-    background: #0081A7;
+    background: #00A8E8;
 }
 
 .theme-mountain-opt span {
-    background: #2D6A4F;
+    background: #3A86FF;
 }
 
 .theme-city-opt span {
-    background: #1D3557;
+    background: #FF006E;
 }
 
-.theme-beach-opt span {
-    background: #F77F00;
-}
-
-/* Default theme dot — Forest Green */
-.theme-option[data-theme="default"] span {
-    background: #2F5D50;
+.theme-beach-sunset-opt span {
+    background: #FF7A18;
 }
 
 @keyframes fadeIn {
