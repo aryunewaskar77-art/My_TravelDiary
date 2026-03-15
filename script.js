@@ -346,10 +346,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: formData
             });
             const data = await response.json();
+
+            if (!response.ok) {
+                console.warn("Cloudinary upload failed:", data.error?.message);
+                console.warn("Falling back to local Base64 storage...");
+                return await toBase64(file);
+            }
+
             return data.secure_url;
         } catch (error) {
-            console.error("Cloudinary upload error:", error);
-            return null;
+            console.error("Cloudinary request error:", error);
+            console.warn("Falling back to local Base64 storage due to network error...");
+            return await toBase64(file);
         }
     }
 
