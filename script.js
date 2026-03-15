@@ -363,6 +363,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMemories() {
+        // Maps per-card theme names to card background/text colors
+        const CARD_THEME_STYLES = {
+            'tropical': { bg: '#E6FFFB', text: '#023047' },
+            'mountain': { bg: '#EAF4F4', text: '#081C15' },
+            'city': { bg: '#0F172A', text: '#E5E7EB' },
+            'beach-sunset': { bg: '#FFF1E6', text: '#3A2E2A' },
+        };
+
         const userMemories = memories.filter(m => m.userId === currentUser.id);
 
         if (userMemories.length === 0) {
@@ -371,7 +379,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         diaryEntries.innerHTML = userMemories.map(m => {
-            const style = `style="--card-bg: ${m.palette.bg}; --card-text: ${m.palette.text};"`;
+            const savedTheme = localStorage.getItem(`card_theme_${m.id}`);
+            const themed = savedTheme && savedTheme !== 'default' ? CARD_THEME_STYLES[savedTheme] : null;
+            const bg = themed ? themed.bg : m.palette.bg;
+            const text = themed ? themed.text : m.palette.text;
+            const style = `style="--card-bg: ${bg}; --card-text: ${text};"`;
             return `
                 <div class="entry-card" ${style} onclick="viewMemory(${m.id})">
                     <img src="${m.thumbnail}" alt="${m.title}" class="entry-media">

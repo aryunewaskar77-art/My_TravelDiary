@@ -433,8 +433,9 @@ header {
 .entry-media {
     width: 100%;
     height: 250px;
-    object-fit: cover;
-    background: #e1e4e8;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .entry-content {
@@ -639,8 +640,10 @@ header {
     height: 50vh;
     width: 100%;
     position: relative;
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: flex-end;
     padding: 4rem 5%;
@@ -711,11 +714,15 @@ header {
 
 .gallery-item {
     width: 100%;
-    height: 350px;
-    object-fit: cover;
+    height: auto;
+    min-height: 220px;
+    max-height: 620px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.04);
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
+    display: block;
 }
 
 @keyframes fadeIn {
@@ -743,15 +750,15 @@ header {
 }
 
 .theme-toggle-btn {
-    width: 60px;
-    height: 60px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
     background: var(--accent);
     color: white;
     border: none;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -843,20 +850,214 @@ header {
     }
 }
 
+/* ─── Responsive ─── */
 @media (max-width: 768px) {
+
+    /* Login */
     .login-box {
-        padding: 2rem;
+        padding: 2.5rem 1.8rem;
+        border-radius: 20px;
+    }
+
+    .login-box h1 {
+        font-size: 1.8rem;
+    }
+
+    .login-box .logo {
+        font-size: 2rem;
+    }
+
+    /* App header */
+    header {
+        padding: 0.8rem 4%;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .header-actions {
+        gap: 0.8rem;
+    }
+
+    .user-profile span {
+        display: none;
+    }
+
+    /* hide name, show avatar only */
+    .primary-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Entry grid */
+    .entries-grid {
+        padding: 1.5rem 4%;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Entry card */
+    .entry-media {
+        height: 200px;
+    }
+
+    .entry-content {
+        padding: 1.4rem;
+    }
+
+    .entry-title {
+        font-size: 1.3rem;
+    }
+
+    /* Entry creation modal */
+    .modal-content {
+        padding: 2rem 1.5rem;
+        width: 95%;
+        margin: 3% auto;
+    }
+
+    /* Detail view — cover photo */
+    .detail-header {
+        height: 38vh;
     }
 
     .detail-header h1 {
-        font-size: 2.5rem;
-    }
-
-    .detail-header {
-        height: 40vh;
+        font-size: 2.2rem;
     }
 
     .detail-body {
-        padding: 2rem 5%;
+        padding: 2rem 4%;
+    }
+
+    .detail-memory-text {
+        font-size: 1.1rem;
+    }
+
+    /* Detail view — top bar: stack on very tight screens */
+    .detail-page-header {
+        padding: 0.8rem 4%;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .detail-actions {
+        gap: 0.6rem;
+        flex-wrap: wrap;
+    }
+
+    .back-btn {
+        font-size: 1rem;
+    }
+
+    .secondary-btn {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .add-media-label {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    /* Gallery */
+    .media-gallery {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .gallery-item {
+        min-height: 180px;
+    }
+
+    /* Edit textarea */
+    .edit-textarea {
+        font-size: 1rem;
+        height: 220px;
+    }
+
+    /* Theme switcher */
+    .theme-switcher {
+        bottom: 20px;
+        right: 16px;
+    }
+
+    .theme-toggle-btn {
+        width: 58px;
+        height: 58px;
+        font-size: 1.5rem;
+    }
+
+    .theme-menu {
+        padding: 0.75rem;
+    }
+
+    .theme-option {
+        padding: 0.65rem 1.1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 2rem 1.2rem;
+    }
+
+    .login-box h1 {
+        font-size: 1.5rem;
+    }
+
+    header {
+        padding: 0.7rem 3%;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .entries-grid {
+        padding: 1rem 3%;
+        gap: 1rem;
+    }
+
+    .entry-media {
+        height: 170px;
+    }
+
+    .entry-content {
+        padding: 1.1rem;
+    }
+
+    .entry-title {
+        font-size: 1.15rem;
+    }
+
+    .detail-header {
+        height: 32vh;
+    }
+
+    .detail-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .detail-body {
+        padding: 1.5rem 3%;
+    }
+
+    .modal-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .theme-toggle-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 1.3rem;
+    }
+
+    .theme-switcher {
+        bottom: 16px;
+        right: 12px;
     }
 }
