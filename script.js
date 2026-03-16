@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Cloudinary Configuration ---
-    // IMPORTANT: replace with your actual cloud name and unsigned upload preset
-    const CLOUD_NAME = "YOUR_CLOUD_NAME";
-    const UPLOAD_PRESET = "YOUR_UNSIGNED_PRESET"; // Obtain this in Cloudinary Settings > Upload > Upload Presets
+    const CLOUD_NAME = "de2fnmuru";
+    const API_KEY = "161441488381925";
+    const API_SECRET = "78vczjITlrj6M957mJlMcMyHtQ8";
     const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
+    const UPLOAD_PRESET = "your_upload_preset";
 
     const loginScreen = document.getElementById('loginScreen');
     const guestBtn = document.getElementById('guestBtn');
@@ -330,15 +331,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     async function uploadToCloudinary(file) {
-        if (CLOUD_NAME === "YOUR_CLOUD_NAME" || UPLOAD_PRESET === "YOUR_UNSIGNED_PRESET") {
+        if (!CLOUD_NAME || !API_KEY || !API_SECRET) {
             console.warn("Cloudinary not configured. Falling back to local Base64.");
             return await toBase64(file);
         }
 
+        const timestamp = Math.round((new Date).getTime() / 1000);
+        const folder = `travelDiary/${currentUser.email}`;
+
+        // Generate signature for secure upload
+        const strToSign = `folder=${folder}&timestamp=${timestamp}&upload_preset=${UPLOAD_PRESET}${API_SECRET}`;
+        const encoder = new TextEncoder();
+        const data = encoder.encode(strToSign);
+        const hashBuffer = await crypto.subtle.digest('SHA-1', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const signature = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
         const formData = new FormData();
         formData.append('file', file);
+        formData.append('api_key', API_KEY);
+        formData.append('timestamp', timestamp);
+        formData.append('signature', signature);
+        formData.append('folder', folder);
         formData.append('upload_preset', UPLOAD_PRESET);
-        formData.append('folder', `travelDiary/${currentUser.email}`);
 
         try {
             const response = await fetch(CLOUDINARY_URL, {
