@@ -1,0 +1,4 @@
+[build]
+  base = "travel-diary"
+  command = "npm run build"
+  publish = "dist"
